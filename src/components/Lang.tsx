@@ -23,7 +23,7 @@ const LanguageSupport = () => {
                         delay={0.05 * idx}
                         className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors h-auto"
                     >
-                        <span className="text-2xl">{language.flag}</span>
+                        
                         <span className="text-lg lg:text-xl">{language.name}</span>
                     </Container>
                 ))}
