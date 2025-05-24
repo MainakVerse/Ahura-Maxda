@@ -147,7 +147,7 @@ const ContentArea: FC = () => {
 
       {/* Modal */}
       {showModal && selectedMenu && (
-        <div className="font-arial fixed inset-0 bg-black/80 backdrop-blur-sm text-black z-50 flex items-center justify-center p-4">
+        <div className="font-arial fixed inset-0 bg-black/80 backdrop-blur-sm text-white z-50 flex items-center justify-center p-4">
           <div className="bg-gray-900 rounded-lg w-full max-w-4xl max-h-[90vh] overflow-auto relative p-6">
             <button
               className="absolute top-4 right-4 text-white hover:text-red-500"
@@ -184,10 +184,10 @@ const ContentArea: FC = () => {
             </div>
 
             <button
-              className={`mt-4 w-full px-6 py-2 rounded-full bg-white border border-green-500 ${
+              className={`mt-4 w-full px-6 py-2 rounded-full border border-green-500 ${
                 isGenerating
                   ? "bg-gray-700 opacity-50 cursor-not-allowed"
-                  : "bg-gray-800 hover:bg-green-700 hover:text-white transition"
+                  : "bg-gray-800 hover:bg-green-700 hover:text-black transition"
               }`}
               onClick={handleGenerate}
               disabled={isGenerating}
