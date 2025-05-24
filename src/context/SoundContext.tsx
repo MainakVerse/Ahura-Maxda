@@ -1,7 +1,6 @@
-// context/SoundContext.tsx
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 type SoundContextType = {
   isPlaying: boolean;
@@ -18,24 +17,24 @@ export const useSound = () => {
 
 export const SoundProvider = ({ children }: { children: ReactNode }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audio] = useState(() => new Audio("/music.mp3")); // Add your music file in /public
-
-  useEffect(() => {
-    audio.loop = true;
-    return () => {
-      audio.pause();
-    };
-  }, [audio]);
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
   const toggleSound = () => {
-    setIsPlaying((prev) => {
-      if (prev) {
+    if (!audio) {
+      const newAudio = new Audio("/music.mp3");
+      newAudio.loop = true;
+      newAudio.play();
+      setAudio(newAudio);
+      setIsPlaying(true);
+    } else {
+      if (isPlaying) {
         audio.pause();
+        setIsPlaying(false);
       } else {
         audio.play();
+        setIsPlaying(true);
       }
-      return !prev;
-    });
+    }
   };
 
   return (
